@@ -1,0 +1,10 @@
+#sources 
+/data
+
+/src/__pycache__
+
+#env 
+.env
+
+#macOS
+.DS_Store

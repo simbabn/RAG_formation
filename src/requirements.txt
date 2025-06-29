@@ -1,0 +1,26 @@
+# Traitement de PDF
+# PyMuPDF==1.23.4             # Extraction de texte PDF
+# pdfplumber==0.10.2          # Alternative pour des PDF plus complexes
+
+# Langchain pour la structure RAG
+langchain==0.2.1
+langchain-community==0.0.32  # Connecteurs (Chroma, FAISS, etc.)
+
+# Embeddings et LLM Vertex AI
+google-cloud-aiplatform==1.48.0  # Vertex AI SDK
+vertexai==0.0.1                  # Wrapper simplifié Vertex AI
+
+# Vector store local (dev/test)
+chromadb==0.4.24                # DB vectorielle légère pour dev
+
+# Outils NLP
+tiktoken==0.7.0                 # Tokenizer compatible OpenAI
+numpy==1.26.4
+pandas==2.2.2
+
+# Pour orchestrer (optionnel)
+fastapi==0.111.0                # API pour déploiement éventuel
+uvicorn[standard]==0.29.0
+
+# Autres
+python-dotenv==1.0.1            # Pour gérer .env / clés API
