@@ -7,11 +7,12 @@ from langchain_community.document_loaders import PyPDFDirectoryLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document as Documents
 
-from embedding_ollama import get_ollama_embeddings
-from langchain.vectorstores.chroma import Chroma 
+from embedding_ollama import get_ollama_embeddings 
+from langchain_community.vectorstores import Chroma
 
-CHROMA_PATH = "chroma"
-DATA_PATH = "../data/test/"
+
+CHROMA_PATH = "data/chroma"
+DATA_PATH = "data/"
 
 def main():
 
@@ -54,7 +55,7 @@ def add_to_chroma(chunks: list[Documents]):
     """
 
     db = Chroma(
-        persist_directory="../data/chroma_db",
+        persist_directory="data/chroma_db",
         embedding_function=get_ollama_embeddings(),
     )
     
