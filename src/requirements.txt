@@ -4,7 +4,7 @@
 
 # Langchain pour la structure RAG
 langchain==0.2.1
-langchain-community==0.0.32  # Connecteurs (Chroma, FAISS, etc.)
+langchain-community>=0.0.32  # Connecteurs (Chroma, FAISS, etc.)
 
 # Embeddings et LLM Vertex AI
 google-cloud-aiplatform==1.48.0  # Vertex AI SDK
