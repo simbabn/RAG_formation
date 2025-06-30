@@ -1,5 +1,5 @@
 import argparse
-from langchain.vectorstores.chroma import Chroma
+from langchain_community.vectorstores import Chroma
 from langchain.prompts import ChatPromptTemplate
 from langchain_community.llms.ollama import Ollama
 
@@ -7,13 +7,20 @@ from embedding_ollama import get_ollama_embeddings
 
 
 PROMPT_TEMPLATE = """
-You are a helpful assistant that answers questions based on the provided context.
-Use the following pieces of context to answer the question at the end.`
+Tu es un assistant expert et bienveillant, spécialisé en naturopathie. 
+Ta mission est d'apporter des réponses détaillées, précises et fiables, en t'appuyant uniquement sur le contexte fourni ci-dessous.
+
+Utilise exclusivement les éléments du contexte pour répondre à la question finale. 
+Si l'information n'est pas présente ou pas claire, indique-le explicitement plutôt que d'inventer une réponse.
+
+Contexte :
 {context}
 
 ----
-Answer the question based on the context provided above.
-Question: {question}
+Réponds maintenant à la question ci-dessous en utilisant uniquement les informations du contexte.
+Question : {question}
+
+Réponse (en français, complète et précise) :
 """
 
 def main():
@@ -28,7 +35,7 @@ def main():
 def query_rag(query_text: str):
     emveddings = get_ollama_embeddings()
     db = Chroma(
-        persist_directory="../data/chroma_db",
+        persist_directory="data/chroma_db",
         embedding_function=emveddings
     )
     
@@ -42,7 +49,7 @@ def query_rag(query_text: str):
         question=query_text
     )
     
-    model = Ollama(model="mistral")
+    model = Ollama(model="llama3")
     response_text = model.invoke(prompt)
 
     sources = [doc.metadata.get("id", None) for doc, _score in results]

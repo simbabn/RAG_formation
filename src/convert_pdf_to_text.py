@@ -10,7 +10,6 @@ from langchain.schema.document import Document as Documents
 from embedding_ollama import get_ollama_embeddings 
 from langchain_community.vectorstores import Chroma
 
-
 CHROMA_PATH = "data/chroma"
 DATA_PATH = "data/"
 
